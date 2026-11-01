@@ -141,7 +141,7 @@ entities:
       items:
         cobblestone: 300
     count-all-mobs-for-spawning: false
-    creative-arrow-despawn-rate: 60
+    creative-arrow-despawn-rate: '60'
     despawn-range-shape: ELLIPSOID
     despawn-ranges:
       ambient:
@@ -183,7 +183,7 @@ entities:
     iron-golems-can-spawn-in-air: false
     max-arrow-despawn-invulnerability: 200
     monster-spawn-max-light-level: default
-    non-player-arrow-despawn-rate: 60
+    non-player-arrow-despawn-rate: '60'
     per-player-mob-spawns: true
     scan-for-legacy-ender-dragon: true
     skeleton-horse-thunder-spawn-chance: default
@@ -248,7 +248,7 @@ environment:
   treasure-maps:
     enabled: true
     find-already-discovered:
-      loot-tables: true
+      loot-tables: 'true'
       villager-trade: true
   void-damage-amount: 4.0
   void-damage-min-build-height-offset: -64.0
