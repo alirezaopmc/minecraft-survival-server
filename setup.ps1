@@ -56,7 +56,8 @@ if (-not (Test-Path (Join-Path $jdk 'bin\java.exe'))) {
     New-Item -ItemType Directory -Path $tmp | Out-Null
     # The bundled ucrtbase.dll is skipped: it could not be written on the original
     # host, and Windows 10/11 supply their own copy in System32.
-    & tar.exe -xf (Join-Path $cache $files[0].Name) -C $tmp --exclude '*/bin/ucrtbase.dll'
+    # Windows' own tar: GNU tar from Git Bash treats C: paths as remote hosts.
+    & "$env:SystemRoot\System32\tar.exe" -xf (Join-Path $cache $files[0].Name) -C $tmp --exclude '*/bin/ucrtbase.dll'
     if ($LASTEXITCODE -ne 0) { throw 'Could not extract Java.' }
     Move-Item -Path (Get-ChildItem $tmp -Directory | Select-Object -First 1).FullName -Destination $jdk
     Remove-Item $tmp -Recurse

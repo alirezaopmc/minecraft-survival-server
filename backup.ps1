@@ -15,6 +15,7 @@ $backups = Join-Path $root 'backups'
 New-Item -ItemType Directory -Force -Path $backups | Out-Null
 $zip = Join-Path $backups ('world-{0:yyyy-MM-dd_HH-mm-ss}.zip' -f (Get-Date))
 
-& tar.exe -a -c -f $zip -C $server @worlds
+# Windows' own tar: GNU tar from Git Bash treats C: paths as remote hosts.
+& "$env:SystemRoot\System32\tar.exe" -a -c -f $zip -C $server @worlds
 if ($LASTEXITCODE -ne 0) { throw 'Backup failed.' }
 Write-Host ("Backup created: {0} ({1:N0} MB)" -f $zip, ((Get-Item $zip).Length / 1MB))
