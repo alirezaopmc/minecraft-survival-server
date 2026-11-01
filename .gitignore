@@ -1,0 +1,19 @@
+# Downloaded by setup.ps1 (Mojang's EULA restricts redistributing server files)
+/runtime/
+
+# Everything the server generates: worlds, player data, the AuthMe password
+# database, whitelist, ops, bans, logs. Tracked settings live in config/.
+/server/
+
+/backups/
+
+# Never publish these, wherever they end up
+*.db
+*.jar
+*.zip
+playit.toml
+whitelist.json
+ops.json
+banned-*.json
+usercache.json
+.claude/
